@@ -1,0 +1,15 @@
+{
+  "jsonrpc": "2.0",
+  "method": "ptx_sendTransaction",
+  "params": [
+    {
+      "idempotencyKey": "idem-key-001",
+      "type": "private",
+      "domain": "noto",
+      "from": "alice@node1",
+      "to": "0xabcdef",
+      "function": "transfer",
+      "data": "0x010203"
+    }
+  ]
+}
