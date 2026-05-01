@@ -1,6 +1,6 @@
-# Paladin Java SDK — Proof of Concept
+# Paladin Java SDK - Proof of Concept
 
-Pre-mentorship validation of the architectural foundation for [LFX Mentorship 2026 — Build and release a Java SDK for Paladin (Issue #64)](https://github.com/LF-Decentralized-Trust-Mentorships/mentorship-program/issues/64).
+Pre-mentorship validation of the architectural foundation for LFX Mentorship 2026 — Build and release a Java SDK for Paladin
 
 This is **not** the SDK. It is a 6-file proof of concept that validates the three highest-risk design decisions in the proposal *before* the 20-week mentorship clock starts. Building these in advance reduces the risk that the SDK design hits a fundamental architectural problem during the mentorship itself.
 
@@ -50,6 +50,7 @@ cp fixtures/ptx_sendTransaction.json ../src/test/resources/fixtures/
 The fixture is deterministic across runs — the dynamically-allocated request `id` is stripped during capture so the fixture acts as a stable contract.
 
 ## Repository layout
+```bash
 paladin-sdk-java-poc/
 ├── src/main/java/io/lfdt/paladin/poc/
 │   ├── JsonRpcTransport.java          # JSON-RPC transport over java.net.http
@@ -75,6 +76,7 @@ paladin-sdk-java-poc/
 └── ts-fixture-generator/
 ├── generate.js                    # captures fixture from TS SDK
 └── package.json                   # pinned to @lfdecentralizedtrust/paladin-sdk@0.15.0
+```
 
 ## Design decisions (and what's deferred to the mentorship)
 
@@ -88,16 +90,16 @@ paladin-sdk-java-poc/
 
 **Decisions deliberately deferred to the mentorship:**
 
-- Sealed interfaces for sum types in receipts and prepared transactions (proposal §4.1.4) — POC didn't need them yet
-- Virtual-thread opt-in for blocking facade users on JDK 21+ (proposal §3.3.3)
-- Module split: `paladin-sdk-core`, `paladin-sdk-ws`, `paladin-sdk-domain-*`, `paladin-sdk-bom` (proposal §4.1.1)
-- Maven Central publishing under `io.lfdt.paladin` (proposal §4.4.2)
+- Sealed interfaces for sum types in receipts and prepared transactions (proposal 4.1.4) — POC didn't need them yet
+- Virtual-thread opt-in for blocking facade users on JDK 21+ (proposal 3.3.3)
+- Module split: `paladin-sdk-core`, `paladin-sdk-ws`, `paladin-sdk-domain-*`, `paladin-sdk-bom` (proposal 4.1.1)
+- Maven Central publishing under `io.lfdt.paladin` (proposal 4.4.2)
 
 ## About this work
 
 Built by [Arpit Raj](https://github.com/1PoPTRoN) as pre-work for an LFX Mentorship 2026 application to the LFDT Paladin project, mentored by Anna McAllister and Matthew Whitehead at Kaleido.
 
-The proposal (forthcoming, link to be added) documents the full 20-week plan; this POC validates that the load-bearing architectural choices in §3.3, §4.1, and §5.2 of that proposal work in practice before committing to the implementation timeline.
+The proposal (forthcoming, link to be added) documents the full 20-week plan; this POC validates that the load-bearing architectural choices in 3.3, 4.1, and 5.2 of that proposal work in practice before committing to the implementation timeline.
 
 ## License
 
