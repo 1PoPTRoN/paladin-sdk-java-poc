@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group = 'io.lfdt.paladin'
+version = '0.1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Core: Jackson for serialization, SLF4J for logging API
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.18.2'
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+
+    // Test: JUnit 5, WireMock, JSON-Unit, SLF4J test backend
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.wiremock:wiremock-standalone:3.10.0'
+    testImplementation 'net.javacrumbs.json-unit:json-unit-assertj:3.5.0'
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.16'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        showStandardStreams = false
+    }
+}
