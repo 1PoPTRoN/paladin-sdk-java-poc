@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -157,8 +158,13 @@ public final class JsonRpcTransport {
     }
 
     private static ObjectMapper defaultMapper() {
+	SimpleModule hexBytesModule = new SimpleModule("paladin-hex-bytes")
+	    .addSerializer(HexBytes.class, new HexBytesSerializer())
+            .addDeserializer(HexBytes.class, new HexBytesDeserializer());
+
         return new ObjectMapper()
             .registerModule(new Jdk8Module())
+	    .registerModule(hexBytesModule)
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     }
