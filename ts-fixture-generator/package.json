@@ -1,0 +1,13 @@
+{
+  "name": "paladin-sdk-java-poc-fixture-generator",
+  "version": "1.0.0",
+  "description": "Captures wire-format fixtures from the official Paladin TypeScript SDK for use in differential testing of the Java SDK.",
+  "private": true,
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "dependencies": {
+    "@lfdecentralizedtrust/paladin-sdk": "0.15.0",
+    "express": "^4.21.0"
+  }
+}

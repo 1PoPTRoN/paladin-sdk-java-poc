@@ -10,6 +10,7 @@ build/
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Node (for the TS fixture generator)
 ts-fixture-generator/node_modules/
